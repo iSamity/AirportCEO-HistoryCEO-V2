@@ -35,6 +35,9 @@ internal class TiledObjectsManagerPatch
 
 
         var action = new TileableAction(tileables);
+
+        tileables.Clear();
+
         HistoryManager.AddToHistory(action);
         Plugin.Logger.LogInfo($"Added TileableAction to history for tileable object");
     }
@@ -43,9 +46,10 @@ internal class TiledObjectsManagerPatch
 internal class  TileableAction: IHistoryAction
 {
     List<ITileable> tileables { get; set; }
-    public TileableAction(List<ITileable> tileables)
+    public TileableAction(List<ITileable> _tileables)
     {
-        this.tileables = tileables;
+        tileables = new List<ITileable>();
+        tileables.AddRange(_tileables);
     }
 
     public void Undo()
