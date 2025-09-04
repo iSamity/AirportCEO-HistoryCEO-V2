@@ -48,13 +48,13 @@ internal class  TileableAction: IHistoryAction
         this.tileables = tileables;
     }
 
+    public void Undo()
+    {
+        Singleton<TiledObjectsManager>.Instance.RemoveTileables(tileables, true);
+    }
+
     public void Redo()
     {
         //Singleton<TiledObjectsManager>.Instance.AddTileable(tileable);
     }
-    public void Undo()
-    {
-       Singleton<TiledObjectsManager>.Instance.RemoveTileables(tileables, true);
-    }
-
 }
