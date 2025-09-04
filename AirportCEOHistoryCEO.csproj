@@ -25,10 +25,10 @@
 
 
 	<ItemGroup>
-    <PackageReference Include="AirportCEOShortcutCEO" Version="0.2.0" />
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="ShortcutCeo" Version="1.0.1" />
     <PackageReference Include="UnityEngine.Modules" Version="2019.4.40" IncludeAssets="compile" />
   </ItemGroup>
   

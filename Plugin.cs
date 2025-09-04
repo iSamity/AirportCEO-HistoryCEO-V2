@@ -10,7 +10,7 @@ namespace AirportCEOHistoryCEO;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 [BepInDependency("org.airportceomodloader.humoresque")]
-[BepInDependency("AirportCEOShortcutCEO")]
+[BepInDependency("org.iSamity.plugins.ShortcutCeo")]
 public class Plugin : BaseUnityPlugin
 {
     internal static new ManualLogSource Logger;
