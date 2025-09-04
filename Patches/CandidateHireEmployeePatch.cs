@@ -10,10 +10,11 @@ namespace AirportCEOHistoryCEO.Patches;
 /// This patch is for when you quick hire/fire an employee from the employee container UI 
 /// Not when looking at the actual employee 
 /// </summary>
-[HarmonyPatch(typeof(EmployeeContainerUI), nameof(EmployeeContainerUI.QuickHireFireEmployee))]
-internal static class EmployeeContainerQuickHireFirePatch
+[HarmonyPatch(typeof(CandidateController), nameof(CandidateController.HireEmployee))]
+internal static class CandidateHireEmployeePatch
 {
-    public static void Postfix(EmployeeController employee, Action refreshPanel)
+    [HarmonyPostfix]
+    public static void PostfixPatch(CandidateController __instance, ref bool result, EmployeeController employee)
     {
         // TODO: Check if employee is being hired or fired
         // and if this data is correctly set before postfix
@@ -22,23 +23,23 @@ internal static class EmployeeContainerQuickHireFirePatch
             
         //}
 
-        if(!Singleton<CandidateController>.Instance.CanHireEmployee(employee.EmployeeType))
+        if(!__instance.CanHireEmployee(employee.EmployeeType))
         {
             return;
         }
 
 
-        var action = new EmployeeQuickHireFireAction(employee);
+        var action = new HireEmployeeAction(employee);
         HistoryManager.AddToHistory(action);
-        Plugin.Logger.LogInfo($"Added EmployeeQuickHireFireAction to history");
+        Plugin.Logger.LogInfo($"Added HireEmployeeAction to history");
     }
 }
 
-internal class EmployeeQuickHireFireAction : IHistoryAction
+internal class HireEmployeeAction : IHistoryAction
 {
     private EmployeeController employee { get; set; }
 
-    public EmployeeQuickHireFireAction(EmployeeController _employee)
+    public HireEmployeeAction(EmployeeController _employee)
     {
         employee = _employee;
     }
@@ -56,14 +57,13 @@ internal class EmployeeQuickHireFireAction : IHistoryAction
             return;
         }
 
-        Plugin.Logger.LogInfo($"Undoing EmployeeQuickHireFireAction");
+        Plugin.Logger.LogInfo($"Undoing HireEmployeeAction");
         Singleton<CandidateController>.Instance.FireEmployee(employee);
     }
 
     public void Redo()
     {
-        Plugin.Logger.LogInfo($"Redoing EmployeeQuickHireFireAction");
+        Plugin.Logger.LogInfo($"Redoing HireEmployeeAction");
         Singleton<CandidateController>.Instance.HireEmployee(employee);
-
     }
 }
