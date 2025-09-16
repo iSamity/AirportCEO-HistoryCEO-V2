@@ -1,4 +1,4 @@
-﻿using AirportCEOHistoryCEO.Models;
+﻿using AirportCEOHistoryCEO.History.Models;
 using AirportCEOModLoader.Core;
 using BepInEx.Configuration;
 using BepInEx.Logging;

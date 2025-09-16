@@ -1,11 +1,10 @@
 ﻿using AirportCEOHistoryCEO.History;
-using AirportCEOHistoryCEO.History.Candidate;
-using AirportCEOHistoryCEO.Models;
+using AirportCEOHistoryCEO.History.Models;
 using AirportCEOModLoader.Core;
 using HarmonyLib;
 
 
-namespace AirportCEOHistoryCEO.Patches;
+namespace AirportCEOHistoryCEO.Persons;
 
 /// <summary>
 /// This patch is for when you fire an employee using the selected employee view or all employees

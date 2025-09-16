@@ -1,9 +1,9 @@
 ﻿using AirportCEOHistoryCEO.History;
-using AirportCEOHistoryCEO.Models;
+using AirportCEOHistoryCEO.History.Models;
 using HarmonyLib;
 
 
-namespace AirportCEOHistoryCEO.Patches;
+namespace AirportCEOHistoryCEO.Persons;
 
 /// <summary>
 /// This patch is for when you hire an employee using the selected employee view or all employees

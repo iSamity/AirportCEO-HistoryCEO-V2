@@ -1,4 +1,4 @@
-﻿namespace AirportCEOHistoryCEO.Models;
+﻿namespace AirportCEOHistoryCEO.History.Models;
 
 public interface IHistoryAction
 {

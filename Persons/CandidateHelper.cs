@@ -1,6 +1,6 @@
 ﻿using Nodes;
 
-namespace AirportCEOHistoryCEO.History.Candidate;
+namespace AirportCEOHistoryCEO.Persons;
 
 internal static class CandidateHelper
 {
@@ -158,7 +158,7 @@ internal static class CandidateHelper
                     }
                 }
             }
-            else if (SingletonNonDestroy<GridController>.Instance.TryGetItemFromPosition<Walkalator>(eeem.FloorPosition, out output2))
+            else if (SingletonNonDestroy<GridController>.Instance.TryGetItemFromPosition(eeem.FloorPosition, out output2))
             {
                 neem.Position = output2.StartPosition;
             }

@@ -1,8 +1,8 @@
 ﻿using AirportCEOHistoryCEO.History;
-using AirportCEOHistoryCEO.Models;
+using AirportCEOHistoryCEO.History.Models;
 using HarmonyLib;
 
-namespace AirportCEOHistoryCEO.Patches;
+namespace AirportCEOHistoryCEO.Building;
 
 [HarmonyPatch(typeof(PlaceableObject), nameof(PlaceableObject.ChangeToPlaced))]
 internal static class PlaceableObjectPatch

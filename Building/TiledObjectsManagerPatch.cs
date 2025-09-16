@@ -1,10 +1,10 @@
 ﻿using AirportCEOHistoryCEO.History;
-using AirportCEOHistoryCEO.Models;
+using AirportCEOHistoryCEO.History.Models;
 using HarmonyLib;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AirportCEOHistoryCEO.Patches;
+namespace AirportCEOHistoryCEO.Building;
 
 /// <summary>
 /// This patch is for building tileables like foundations or taxiways
