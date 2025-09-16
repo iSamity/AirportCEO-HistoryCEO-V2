@@ -1,20 +1,22 @@
 ﻿using AirportCEOHistoryCEO.History;
 using AirportCEOHistoryCEO.Models;
 using HarmonyLib;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace AirportCEOHistoryCEO.Patches;
 
+/// <summary>
+/// This patch is for building tileables like foundations or taxiways
+/// </summary>
 [HarmonyPatch]
-internal class TiledObjectsManagerPatch
+internal class AddTileablePatch
 {
-     static List<ITileable> tileables = new List<ITileable>();   
+    static List<ITileable> tileables = new List<ITileable>();
 
     [HarmonyPatch(typeof(TiledObjectsManager), nameof(TiledObjectsManager.AddTileable))]
     [HarmonyPostfix]
-    internal static void AddTileablePatch(ITileable tileable)
+    internal static void AddTileablePostfix(ITileable tileable)
     {
         if (!SaveLoadGameDataController.loadComplete)
         {
@@ -26,13 +28,17 @@ internal class TiledObjectsManagerPatch
 
     [HarmonyPatch(typeof(TileMerger), nameof(TileMerger.MergeSurroundingTiles))]
     [HarmonyPostfix]
-    internal static void TileMergerPatch(Vector3[] positions, ITileSource tileSource)
+    internal static void TileMergerPostfix(Vector3[] positions, ITileSource tileSource)
     {
         if (!SaveLoadGameDataController.loadComplete)
         {
             return;
         }
 
+        if (tileables.Count == 0)
+        {
+            return;
+        }
 
         var action = new TileableAction(tileables);
 
@@ -43,7 +49,7 @@ internal class TiledObjectsManagerPatch
     }
 }
 
-internal class  TileableAction: IHistoryAction
+internal class TileableAction : IHistoryAction
 {
     List<ITileable> tileables { get; set; }
     public TileableAction(List<ITileable> _tileables)

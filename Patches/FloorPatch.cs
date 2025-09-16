@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace AirportCEOHistoryCEO.Patches;
 
+/// <summary>
+/// This patch is for building a wall or change floor type
+/// </summary>
 [HarmonyPatch]
 internal class AddTileToGridPatch
 {
@@ -91,6 +94,7 @@ internal class FloorAction : IHistoryAction
             t.tileable.Quality = t.oldQuality;
         });
 
+        // This refreshes the tiles after setting the old quality back
         TileMerger.MergeTileablesByType(Enums.TileType.Floor);
     }
 

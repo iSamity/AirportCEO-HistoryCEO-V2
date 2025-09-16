@@ -1,26 +1,24 @@
 ﻿using AirportCEOHistoryCEO.History;
 using AirportCEOHistoryCEO.Models;
 using HarmonyLib;
-using System;
 
 
 namespace AirportCEOHistoryCEO.Patches;
 
 /// <summary>
-/// This patch is for when you quick hire/fire an employee from the employee container UI 
-/// Not when looking at the actual employee 
+/// This patch is for when you hire an employee using the selected employee view or all employees
 /// </summary>
 [HarmonyPatch(typeof(CandidateController), nameof(CandidateController.HireEmployee))]
 internal static class CandidateHireEmployeePatch
 {
     [HarmonyPostfix]
-    public static void PostfixPatch(CandidateController __instance, ref bool result, EmployeeController employee)
+    public static void PostfixPatch(CandidateController __instance, EmployeeController employee)
     {
         // TODO: Check if employee is being hired or fired
         // and if this data is correctly set before postfix
         //if (!employee.EmployeeModel.isHired)
         //{
-            
+
         //}
 
         if(!__instance.CanHireEmployee(employee.EmployeeType))
