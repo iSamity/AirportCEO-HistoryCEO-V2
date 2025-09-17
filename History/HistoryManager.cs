@@ -1,12 +1,9 @@
 ﻿using AirportCEOHistoryCEO.History.Models;
 using AirportCEOModLoader.Core;
-using BepInEx.Configuration;
 using BepInEx.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AirportCEOHistoryCEO.History;
 
@@ -46,7 +43,7 @@ public class HistoryManager
             ExceptionUtils.ProccessException(e);
         }
     }
-      public static void  Redo()
+    public static void Redo()
     {
         if (redoStack.Count <= 0)
         {

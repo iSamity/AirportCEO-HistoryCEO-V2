@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace AirportCEOHistoryCEO;
 
-[BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
+[BepInPlugin("org.iSamity.plugins." + MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 [BepInDependency("org.airportceomodloader.humoresque")]
 [BepInDependency("org.iSamity.plugins.ShortcutCeo")]
 public class Plugin : BaseUnityPlugin
@@ -41,31 +41,31 @@ public class Plugin : BaseUnityPlugin
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_NAME} - Setting up config.");
 
         var undoAction = Config.Bind(
-            "Undo Action",
-            "UndoAction",
-            new KeyboardShortcut(KeyCode.Z, KeyCode.LeftControl),
-            "Shortcut for undo action"
+            "General",
+            "Undo action",
+            new KeyboardShortcut(KeyCode.Z, KeyCode.LeftControl)
         );
-
-        var redoAction = Config.Bind(
-            "Redo Action",
-            "RedoAction",
-            new KeyboardShortcut(KeyCode.Y, KeyCode.LeftControl),
-            "Shortcut for redo action"
-        );
-
 
         ConfigManager.AddShortcut(undoAction, () => HistoryManager.Undo());
-        // Disable redo for now as it doesn't work as expected
-        //ConfigManager.AddShortcut(redoAction, () => HistoryManager.Redo());
 
-        var debugShortcut = Config.Bind(
-            "Debug Action",
-            "debugShortcut",
-            new KeyboardShortcut(KeyCode.KeypadEnter),
-            "Shortcut for debug action"
-        );
-        ConfigManager.AddShortcut(debugShortcut, () => HistoryManager.Log());
+        #if DEBUG
+            var redoAction = Config.Bind(
+                "General",
+                "Redo shortcut",
+                new KeyboardShortcut(KeyCode.Y, KeyCode.LeftControl),
+            );
+
+
+           ConfigManager.AddShortcut(redoAction, () => HistoryManager.Redo());
+
+           var debugShortcut = Config.Bind(
+                "Debug Action",
+                "debugShortcut",
+                new KeyboardShortcut(KeyCode.KeypadEnter),
+                "Shortcut for debug action"
+                );
+            ConfigManager.AddShortcut(debugShortcut, () => HistoryManager.Log());
+        #endif
 
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_NAME} - Finished up config.");
     }
@@ -76,13 +76,18 @@ public class Plugin : BaseUnityPlugin
 
         var harmony = new HarmonyLib.Harmony(MyPluginInfo.PLUGIN_GUID);
         harmony.PatchAll();
-        
+
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_NAME} - Finished up Harmony.");
     }
 
     private void SetupModLoader()
     {
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_NAME} - Setting up Mod Loader.");
-        WatermarkUtils.Register(new WatermarkInfo(MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION, false));
+
+        #if DEBUG
+                WatermarkUtils.Register(new WatermarkInfo(MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION, false));
+        #else
+                WatermarkUtils.Register(new WatermarkInfo("HyC", MyPluginInfo.PLUGIN_VERSION, true));
+        #endif
     }
 }

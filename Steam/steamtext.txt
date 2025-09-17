@@ -1,0 +1,23 @@
+[h3]Note[/h3]
+This mod requires the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3109136766]AirportCEO Mod Loader[/url] and the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3560363115]Shortcut Ceo[/url] mods.
+ to function. Please make sure to have it correctly downloaded and installed!
+
+[h3]Description[/h3]
+A code mod that handles undoing certain actions when playing Airport CEO. Press f1 in game to change the keybinding for undoing.
+
+Current support undo action:
+- Placing items (chairs, runway foundations and way more)
+- Placing floor variants (wood to marble)
+- Placing walls and foundations
+- Hiring employees
+- Firing employees
+
+[h3]Features[/h3]
+- Add option to undo certain actions
+
+[h3]Version[/h3] 
+read more on [url="https://github.com/iSamity/AirportCEO-HistoryCEO-V2/releases"]Github[/url]
+- v1.0.0 - Initial release
+
+[h3]Developers[/h3]
+You can add your own undo action, curious? Read more on [url="https://github.com/iSamity/AirportCEO-HistoryCEO-V2"]Github[/url] page on how to integrate your plugin with this one.
