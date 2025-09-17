@@ -48,24 +48,24 @@ public class Plugin : BaseUnityPlugin
 
         ConfigManager.AddShortcut(undoAction, () => HistoryManager.Undo());
 
-        #if DEBUG
-            var redoAction = Config.Bind(
-                "General",
-                "Redo shortcut",
-                new KeyboardShortcut(KeyCode.Y, KeyCode.LeftControl),
-            );
+#if DEBUG
+        var redoAction = Config.Bind(
+            "General",
+            "Redo shortcut",
+            new KeyboardShortcut(KeyCode.Y, KeyCode.LeftControl)
+        );
 
 
-           ConfigManager.AddShortcut(redoAction, () => HistoryManager.Redo());
+        ConfigManager.AddShortcut(redoAction, () => HistoryManager.Redo());
 
-           var debugShortcut = Config.Bind(
-                "Debug Action",
-                "debugShortcut",
-                new KeyboardShortcut(KeyCode.KeypadEnter),
-                "Shortcut for debug action"
-                );
-            ConfigManager.AddShortcut(debugShortcut, () => HistoryManager.Log());
-        #endif
+        var debugShortcut = Config.Bind(
+             "Debug Action",
+             "debugShortcut",
+             new KeyboardShortcut(KeyCode.KeypadEnter),
+             "Shortcut for debug action"
+             );
+        ConfigManager.AddShortcut(debugShortcut, () => HistoryManager.Log());
+#endif
 
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_NAME} - Finished up config.");
     }
@@ -84,10 +84,10 @@ public class Plugin : BaseUnityPlugin
     {
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_NAME} - Setting up Mod Loader.");
 
-        #if DEBUG
-                WatermarkUtils.Register(new WatermarkInfo(MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION, false));
-        #else
-                WatermarkUtils.Register(new WatermarkInfo("HyC", MyPluginInfo.PLUGIN_VERSION, true));
-        #endif
+#if DEBUG
+        WatermarkUtils.Register(new WatermarkInfo(MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION, false));
+#else
+        WatermarkUtils.Register(new WatermarkInfo("HyC", MyPluginInfo.PLUGIN_VERSION, true));
+#endif
     }
 }
