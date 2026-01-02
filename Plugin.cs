@@ -47,8 +47,8 @@ public class Plugin : BaseUnityPlugin
         );
 
         ConfigManager.AddShortcut(undoAction, () => HistoryManager.Undo());
-
 #if DEBUG
+        // Needs more work right now it is not really working
         var redoAction = Config.Bind(
             "General",
             "Redo shortcut",
@@ -58,6 +58,7 @@ public class Plugin : BaseUnityPlugin
 
         ConfigManager.AddShortcut(redoAction, () => HistoryManager.Redo());
 
+        // Debug shortcut
         var debugShortcut = Config.Bind(
              "Debug Action",
              "debugShortcut",
@@ -91,3 +92,4 @@ public class Plugin : BaseUnityPlugin
 #endif
     }
 }
+
