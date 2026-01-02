@@ -36,7 +36,7 @@ $ErrorActionPreference = "Stop"
 
 # Get the repository root (parent of scripts directory)
 $RepoRoot = Split-Path $PSScriptRoot -Parent
-$SolutionFile = Join-Path $RepoRoot "AirportCEOTweaks.sln"
+$SolutionFile = Join-Path $RepoRoot "AirportCEOHistoryCEO.sln"
 
 Write-Host "==================================================" -ForegroundColor Cyan
 Write-Host "Building AirportCEO Tweaks (Debug)" -ForegroundColor Cyan

@@ -93,11 +93,7 @@ Build the solution or specific projects in **Debug** configuration. **Automatica
 
 **Available Projects:**
 
-- `AirportCEOTweaksCore`
-- `AirportCEOAircraft`
-- `AirportCEOFlightLimitTweak`
-- `AirportCEORunways`
-- `AirportCEOPlanningReplanned`
+- `AirportCEOHistoryCEOCore`
 
 ### build-release.ps1
 
@@ -110,7 +106,7 @@ Build the solution or specific projects in **Release** configuration. **Automati
 ./scripts/build-release.ps1
 
 # Build specific project (launches game by default)
-./scripts/build-release.ps1 -Project AirportCEOTweaksCore
+./scripts/build-release.ps1 -Project AirportCEOHistoryCEOCore
 
 # Build without launching game
 ./scripts/build-release.ps1 -Launch:$false
@@ -150,10 +146,10 @@ If you prefer using `dotnet` directly:
 
 ```bash
 # Build entire solution (Debug)
-dotnet build AirportCEOTweaks.sln --configuration Debug
+dotnet build AirportCEOHistoryCEO.sln --configuration Debug
 
 # Build entire solution (Release)
-dotnet build AirportCEOTweaks.sln --configuration Release
+dotnet build AirportCEOHistoryCEO.sln --configuration Release
 
 # Build specific project
 dotnet build AirportCEOAircraft/AirportCEOAircraft.csproj --configuration Debug
