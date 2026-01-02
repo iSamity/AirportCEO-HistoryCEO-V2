@@ -21,3 +21,5 @@ read more on [url="https://github.com/iSamity/AirportCEO-HistoryCEO-V2/releases"
 
 [h3]Developers[/h3]
 You can add your own undo action, curious? Read more on [url="https://github.com/iSamity/AirportCEO-HistoryCEO-V2"]Github[/url] page on how to integrate your plugin with this one.
+
+[url=https://buymeacoffee.com/isamity][img]https://i.imgur.com/nyZtCjx.png[/img][/url]
