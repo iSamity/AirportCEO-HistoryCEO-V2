@@ -1,8 +1,6 @@
-# Aiport CEO - ShortcutCEO Plugin
+# Aiport CEO - HistoryCEO Plugin
 
-Plugin that manage keyboard shortcuts in Airport CEO.
-
-Starts with default shortcuts and lets other plugins add their own shortcuts. While checking for conflicts with existing shortcuts.
+Plugin that manage History in AirportCeo
 
 ## Use plugin in Airport CEO
 How to start using the plugin:
